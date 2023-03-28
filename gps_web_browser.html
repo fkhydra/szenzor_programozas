@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Helyadatok lekérése böngészőben</p>
+<p id="adatok">Helyadatok lekérése böngészőben</p>
+
+<script>
+var x = document.getElementById("adatok");
+
+if (navigator.geolocation) {
+  navigator.geolocation.watchPosition(showPosition);
+} else { 
+  x.innerHTML = "A böngésző nem támogatja a helylekérdezést.";
+}
+
+setInterval(showPosition, 1000);
+
+function showPosition(position) {
+  x.innerHTML =
+ "Accuracy: " + position.coords.accuracy +
+ "<br>Longitude: " + position.coords.longitude +
+ "<br>Latitude: " + position.coords.latitude + 
+ "<br>Altitude: " + position.coords.accuracy + 
+ "<br>Speed: " + position.coords.speed;
+}
+</script>
+
+</body>
+</html>
